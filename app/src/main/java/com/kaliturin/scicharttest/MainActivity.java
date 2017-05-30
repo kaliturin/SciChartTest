@@ -1,6 +1,5 @@
 package com.kaliturin.scicharttest;
 
-import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,8 +29,8 @@ import java.util.Collections;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    // Using particular service factory for getting particular class of rates-service
-    private final Class<? extends Service> serviceClass = new ServiceFactory().getServiceClass();
+    // Using service factory for getting particular rates service
+    private final Class<? extends RateService> serviceClass = new RateServiceFactory().getService();
 
     private final static long TIME_INTERVAL = 1000;
     private final static int CHART_CAPACITY = 60;
@@ -117,17 +116,17 @@ public class MainActivity extends AppCompatActivity {
 
     // Starts the rates service
     private void startService() {
-        if(serviceClass != null) {
+        if (serviceClass != null) {
             Intent intent = new Intent(this, serviceClass);
-            intent.putExtra(RandomRateService.RECEIVER, resultReceiver);
-            intent.putExtra(RandomRateService.TIME_INTERVAL, TIME_INTERVAL);
+            intent.putExtra(RateService.RECEIVER, resultReceiver);
+            intent.putExtra(RateService.TIME_INTERVAL, TIME_INTERVAL);
             startService(intent);
         }
     }
 
     // Stops the rates service
     private void stopService() {
-        if(serviceClass != null) {
+        if (serviceClass != null) {
             Intent intent = new Intent(this, serviceClass);
             stopService(intent);
         }

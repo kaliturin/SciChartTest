@@ -1,6 +1,5 @@
 package com.kaliturin.scicharttest;
 
-import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -15,12 +14,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Random rates generation service
  */
-public class RandomRateService extends Service {
-    public static final String RECEIVER = "RECEIVER";
-    public static final String DATE = "DATE";
-    public static final String RATE = "RATE";
-    public static final String TIME_INTERVAL = "TIME_INTERVAL";
-
+public class RandomRateService extends RateService {
     private final ScheduledExecutorService scheduledExecutorService =
             Executors.newSingleThreadScheduledExecutor();
     private ScheduledFuture<?> schedule = null;

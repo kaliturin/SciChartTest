@@ -1,14 +1,13 @@
 package com.kaliturin.scicharttest;
 
-import android.app.Service;
 import android.support.annotation.Nullable;
 
 /**
- * Service factory
+ * Rate services factory
  */
-class ServiceFactory implements IServiceFactory {
+class RateServiceFactory implements IRateServiceFactory {
     @Nullable
-    public Class<? extends Service> getServiceClass() {
+    public Class<? extends RateService> getService() {
         // returning random rates-service
         return RandomRateService.class;
     }
