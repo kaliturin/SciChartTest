@@ -137,8 +137,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
             // rate point
-            long date = resultData.getLong(RandomRateService.DATE);
-            double rate = resultData.getDouble(RandomRateService.RATE);
+            long date = resultData.getLong(RateService.DATE);
+            double rate = resultData.getDouble(RateService.RATE);
             insertPointRunnable.setPoint(new Point(date, rate));
             // update chart
             UpdateSuspender.using(chartSurface, insertPointRunnable);
